@@ -1,10 +1,12 @@
 package spa.sky.finapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,11 +14,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class ExpensesActivity extends AppCompatActivity {
-    EditText pay, tag;
+    EditText pay, tag, datepay;
     DBHelper databaseHelper;
     Button addExpense;
     TextView Finapp;
@@ -29,9 +32,40 @@ public class ExpensesActivity extends AppCompatActivity {
 
 
         databaseHelper = new DBHelper(this);
+        datepay = findViewById(R.id.dateTextViewPay);
         pay = findViewById (R.id.payEditText);
         tag = findViewById (R.id.tagEditText);
         addExpense =  findViewById (R.id.ButtonPay);
+
+        Calendar payCalendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener date2 = new
+                DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+
+                        payCalendar.set(Calendar.YEAR, year);
+                        payCalendar.set(Calendar.MONTH, monthOfYear);
+                        payCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        updateLabel();
+                    }
+
+                    private void updateLabel() {
+                        String myFormat3 = "yyyy-MM-dd";
+                        SimpleDateFormat sdf = new SimpleDateFormat(myFormat3, Locale.US);
+                        datepay.setText(sdf.format(payCalendar.getTime()));
+                    }
+                };
+
+        datepay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(ExpensesActivity.this, date2, payCalendar
+                        .get(Calendar.YEAR), payCalendar.get(Calendar.MONTH),
+                        payCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            };
+        });
 
         Finapp = findViewById (R.id.TitlePay);
         findViewById(R.id.close_pay).setOnClickListener(

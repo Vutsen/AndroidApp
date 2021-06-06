@@ -14,16 +14,6 @@ public class Contact {
     String name, emailId, password;
     long mobile;
 
-    public long getBudget() {
-        return budget;
-    }
-
-    public void setBudget(long budget) {
-        this.budget = budget;
-    }
-
-    long budget;
-
     public String getName() {
         return name;
     }

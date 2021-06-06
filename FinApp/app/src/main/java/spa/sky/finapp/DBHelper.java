@@ -80,7 +80,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_TAG, t.getTag());
         values.put(COL_AMOUNT, t.getAmount());
         values.put(COL_EXIN, t.getExin());
-        values.put(COL_DATETIME, DBHelper.getDateTime());
+        values.put(COL_DATETIME, t.getDateTime());
         db.insert(TABLE_TRANSACT, null, values);
     }
 
@@ -333,10 +333,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    private static String getDateTime() {
+    /*private static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
-    }
+    }*/
 }

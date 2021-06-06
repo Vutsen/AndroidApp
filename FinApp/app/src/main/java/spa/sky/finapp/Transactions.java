@@ -1,13 +1,18 @@
 package spa.sky.finapp;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Transactions {
     String tag;
     int uid, exin;
-    DateFormat Date;
+    String date;
     long amount;
     String created_at;
+    String getdate;
 
     public String getCreated_at() {
         return created_at;
@@ -36,6 +41,12 @@ public class Transactions {
     public String getTag() {
         return tag;
     }
+
+    public String getDateTime(){
+        return getdate;
+    };
+
+    public void setDate(String date){this.date = date; }
 
     public void setTag(String tag) {
         this.tag = tag;
