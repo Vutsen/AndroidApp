@@ -251,6 +251,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+
     public HashMap<String, Integer> getDateExpenses(String start, String end){
         db = this.getReadableDatabase();
 

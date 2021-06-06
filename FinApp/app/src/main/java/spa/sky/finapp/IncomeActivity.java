@@ -24,7 +24,7 @@ public class IncomeActivity extends AppCompatActivity {
     Button addIncome;
     DBHelper databaseHelper;
     TextView FinApp;
-    String date1;
+    String dateT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,7 @@ public class IncomeActivity extends AppCompatActivity {
                         String myFormat2 = "yyyy-MM-dd";
                         SimpleDateFormat sdf = new SimpleDateFormat(myFormat2, Locale.US);
                         datetext.setText(sdf.format(incomeCalendar.getTime()));
+                        dateT = sdf.format(incomeCalendar.getTime());
                     }
                 };
 
@@ -80,8 +81,8 @@ public class IncomeActivity extends AppCompatActivity {
         addIncome.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {
-                if (take.getText ().toString ().equals ("") || tag.getText ().toString ().equals ("")) {
-                    Toast.makeText (getApplicationContext (),"Введите действительную сумму и тег.",Toast.LENGTH_SHORT).show ();
+                if (take.getText ().toString ().equals ("") || tag.getText ().toString ().equals ("") || datetext.getText().toString().equals("")) {
+                    Toast.makeText (getApplicationContext (),"Введите действительную дату,сумму и тег.",Toast.LENGTH_SHORT).show ();
                 }
                 else
                     addTake();
@@ -103,7 +104,7 @@ public class IncomeActivity extends AppCompatActivity {
         t.setExin (1);
         t.setAmount (Long.parseLong (take.getText ().toString ()));
         t.setTag (tag.getText ().toString ());
-        t.setDate(datetext.getText().toString());
+        t.setDate(dateT);
         t.setUid (Integer.parseInt (Utils.userId));
         databaseHelper.insertTransaction (t);
         Toast.makeText (getApplicationContext (),"Доход добавлен", Toast.LENGTH_SHORT).show ();

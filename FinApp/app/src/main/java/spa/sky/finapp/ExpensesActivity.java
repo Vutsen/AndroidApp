@@ -20,6 +20,7 @@ import java.util.Locale;
 
 public class ExpensesActivity extends AppCompatActivity {
     EditText pay, tag, datepay;
+    String dateP;
     DBHelper databaseHelper;
     Button addExpense;
     TextView Finapp;
@@ -55,6 +56,7 @@ public class ExpensesActivity extends AppCompatActivity {
                         String myFormat3 = "yyyy-MM-dd";
                         SimpleDateFormat sdf = new SimpleDateFormat(myFormat3, Locale.US);
                         datepay.setText(sdf.format(payCalendar.getTime()));
+                        dateP = sdf.format(payCalendar.getTime());
                     }
                 };
 
@@ -85,15 +87,11 @@ public class ExpensesActivity extends AppCompatActivity {
             pay.setText (str);
         }
 
-        TextView dateTextView =  findViewById (R.id.dateTextViewPay);
-        String date = new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date());
-        dateTextView.setText (date + ", Expense");
-
         addExpense.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {
-                if (pay.getText ().toString ().equals ("") || tag.getText ().toString ().equals ("")) {
-                    Toast.makeText (getApplicationContext (),"Введите действительную сумму и тег.",Toast.LENGTH_SHORT).show ();
+                if (pay.getText ().toString ().equals ("") || tag.getText ().toString ().equals ("")|| datepay.getText().toString().equals("") ) {
+                    Toast.makeText (getApplicationContext (),"Введите действительную дату,сумму и тег.",Toast.LENGTH_SHORT).show ();
                 }
                 else
                     addPay ();
@@ -193,6 +191,7 @@ public class ExpensesActivity extends AppCompatActivity {
         long l = Math.round (d);
         t.setAmount (l);
         t.setTag (tag.getText ().toString ());
+        t.setDate(dateP);
         t.setUid (Integer.parseInt (Utils.userId));
         databaseHelper.insertTransaction (t);
         databaseHelper.getTransactions ();

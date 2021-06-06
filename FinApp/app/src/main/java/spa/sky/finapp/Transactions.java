@@ -9,7 +9,6 @@ import java.util.Locale;
 public class Transactions {
     String tag;
     int uid, exin;
-    String date;
     long amount;
     String created_at;
     String getdate;
@@ -44,9 +43,9 @@ public class Transactions {
 
     public String getDateTime(){
         return getdate;
-    };
+    }
 
-    public void setDate(String date){this.date = date; }
+    public void setDate(String getdate){this.getdate= getdate; }
 
     public void setTag(String tag) {
         this.tag = tag;
