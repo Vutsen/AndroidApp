@@ -8,6 +8,8 @@ public class Utils {
     public static String userName = "";
     public static int expense = 0;
     public static int income= 0;
+    public static int dateexpense = 0;
+    public static int dateincome= 0;
     public static int pdfNumber = 1;
     public static String startDate = "";
     public static String endDate = "";

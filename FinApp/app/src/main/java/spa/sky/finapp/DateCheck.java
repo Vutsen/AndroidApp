@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,9 +40,10 @@ import java.util.Map;
 
 public class DateCheck extends AppCompatActivity {
     Button take1, pay1, list1, graph1, find;
+    GridLayout gridLayout;
     ListView myListView1;
     DBHelper databaseHelper;
-    TextView home;
+    TextView home,dincome,dexpense;
     PieChart pieChart1;
     EditText start1,end1;
     String end;
@@ -64,6 +66,9 @@ public class DateCheck extends AppCompatActivity {
         databaseHelper = new DBHelper(this);
 
         home = findViewById(R.id.homeTextViewT);
+        dincome = findViewById(R.id.dincome);
+        dexpense = findViewById(R.id.dexpense);
+        gridLayout = findViewById(R.id.gridLayout);
         find = findViewById(R.id.find);
         start1 = findViewById(R.id.start1);
         end1 = findViewById(R.id.end1);
@@ -138,7 +143,6 @@ public class DateCheck extends AppCompatActivity {
         pieChart1.setOnChartValueSelectedListener (new OnChartValueSelectedListener( ) {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-
                 PieEntry pe = (PieEntry) e;
                 Log.i("Диаграмма",pe.getLabel());
                 Snackbar snackbar = Snackbar.make (pieChart1, pe.getLabel (), Snackbar.LENGTH_SHORT);
@@ -184,8 +188,16 @@ public class DateCheck extends AppCompatActivity {
             public void onClick(View v) {
                 graphView1(myListView1);
                 setTList(start,end);
+                SetAllDateExpense(start,end);
             }
         });
+    }
+    public void SetAllDateExpense(String start, String end){
+        databaseHelper.setDateIncomeExpenses(start,end);
+        gridLayout.setVisibility(View.VISIBLE);
+        dincome.setText ("₽ " + Utils.dateincome);
+        dexpense.setText ("₽ " + Utils.dateexpense);
+
     }
 
 

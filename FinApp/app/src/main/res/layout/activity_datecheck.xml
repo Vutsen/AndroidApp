@@ -82,17 +82,90 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/pink"
-            android:text="take" />
+            android:text="Доход" />
 
         <Button
             android:id="@+id/payButtonT1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="pay"
+            android:text="Расход"
             android:background="@color/pink"/>
 
     </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/horScrollViewT1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/dincomeTextView"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="@string/income"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/dincome"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/price1"
+            android:textSize="15sp"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/dexpensesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="@string/expense"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="0"
+            app:layout_rowWeight="1" />
+
+
+        <TextView
+            android:id="@+id/dexpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/price2"
+            android:textSize="15sp"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_row="1"
+            app:layout_rowWeight="1" />
+    </GridLayout>
 
     <LinearLayout
         android:id="@+id/horScrollViewT1"
@@ -107,7 +180,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tranTextViewT1"
-        app:layout_constraintVertical_bias="0.32">
+        app:layout_constraintVertical_bias="0.382">
 
         <Button
             android:id="@+id/listViewTab1"
@@ -191,7 +264,7 @@
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tranTextViewT1"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <EditText
         android:id="@+id/end1"
@@ -204,10 +277,10 @@
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/horScrollViewT1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.969"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tranTextViewT1"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <Button
         android:id="@+id/find"
@@ -217,9 +290,10 @@
         android:text="Рассмотреть на интервале"
         app:layout_constraintBottom_toTopOf="@+id/horScrollViewT1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tranTextViewT1"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.612" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

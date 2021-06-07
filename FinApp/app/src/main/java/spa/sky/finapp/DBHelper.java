@@ -230,6 +230,34 @@ public class DBHelper extends SQLiteOpenHelper {
         c2.close();
     }
 
+    public void setDateIncomeExpenses(String start, String end) {
+        db = this.getReadableDatabase();
+
+        String query5 = "SELECT " + " SUM(" + COL_AMOUNT + ")" + " FROM " + TABLE_TRANSACT + " WHERE " + COL_U_ID + " = " + Utils.userId + " AND " + COL_EXIN + " = 1 AND " + COL_DATETIME + " BETWEEN "+"'"+ start + "'"  +" AND "+"'"+ end +"';";
+        Cursor c1 = db.rawQuery(query5, null);
+
+        if (c1.moveToFirst()) {
+            String income = c1.getString(0);
+            if (income != null) {
+                Utils.dateincome = Integer.parseInt(income);
+                Log.i("ДОХОДЫ", String.valueOf(Utils.income));
+            }
+
+        }
+        c1.close();
+
+        String query6 = "SELECT " + " SUM(" + COL_AMOUNT + ")" + " FROM " + TABLE_TRANSACT + " WHERE " + COL_U_ID + " = " + Utils.userId + " AND " + COL_EXIN + " = 0 AND " + COL_DATETIME + " BETWEEN "+"'"+ start + "'"  +" AND "+"'"+ end +"';";
+        Cursor c2 = db.rawQuery(query6, null);
+
+        if (c2.moveToFirst()) {
+            String expense = c2.getString(0);
+            if (expense != null)
+                Utils.dateexpense = Integer.parseInt(expense);
+            Log.i("РАСХОДЫ", String.valueOf(Utils.expense));
+        }
+        c2.close();
+    }
+
     public HashMap<String, Integer> getExpenses() {
 
         db = this.getReadableDatabase();
