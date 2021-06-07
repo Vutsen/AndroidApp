@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
         android:text="Хотите отправить отчет на почту?"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
