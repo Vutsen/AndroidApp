@@ -7,7 +7,7 @@
     <string name="email">почта:</string>
     <string name="password">пароль:</string>
     <string name="new_user">Новый пользователь?</string>
-    <string name="loginIn">Авторизироваться</string>
+    <string name="loginIn">Авторизоваться</string>
     <string name="nick">Никнейм:</string>
     <string name="phonenumber">номер телефона:</string>
     <string name="budget">Бюджет:</string>

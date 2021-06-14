@@ -111,22 +111,22 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
                 || getConfirmPassword.length() == 0)
 
             new CustomToast().Show_Toast(getActivity(), view,
-                    "All fields are required");
+                    "Все поля обязательны для заполнения");
 
 
         else if (!m.find())
             new CustomToast().Show_Toast(getActivity(), view,
-                    "Your Email Id is Invalid.");
+                    "Ваш Email недействителен.");
 
 
         else if (!getConfirmPassword.equals(getPassword))
             new CustomToast().Show_Toast(getActivity(), view,
-                    "Both password doesn't match.");
+                    "Оба пароля не совпадают.");
 
 
         else if (!terms_conditions.isChecked())
             new CustomToast().Show_Toast(getActivity(), view,
-                    "Please select Terms and Conditions.");
+                    "Пожалуйста, примите условия использования приложения.");
 
         else {
 
@@ -136,7 +136,7 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
             c.setMobile (Long.parseLong (getMobileNumber));
             c.setPassword (getPassword);
             databaseHelper.insertContact(c);
-            Toast.makeText(getActivity(), "Login with Email ID and password.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Войдите с помощью логина и почты.", Toast.LENGTH_SHORT).show();
             new MainActivity().replaceLoginFragment();
         }
 

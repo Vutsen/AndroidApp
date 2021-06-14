@@ -139,11 +139,9 @@ public class Login_Fragment extends Fragment implements View.OnClickListener {
                     "Оба поля должны быть заполнены.");
 
         }
-        // Check if email id is valid or not
         else if (!m.find())
             new CustomToast().Show_Toast(getActivity(), view,
-                    "Ваш Email не действителен.");
-            // Else do login and do your stuff
+                    "Ваш Email недействителен.");
         else {
 
             String userid = emailid.getText ().toString ();

@@ -125,7 +125,6 @@ public class Pdf extends AppCompatActivity {
                     PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentIntent(contentIntent);
 
-            // Add as notification
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             manager.notify(0, builder.build());
 

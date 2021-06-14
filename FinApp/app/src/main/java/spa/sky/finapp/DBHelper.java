@@ -358,14 +358,5 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close ();
         return text;
     };
-
-
-
-
-    /*private static String getDateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
-    }*/
+    
 }
