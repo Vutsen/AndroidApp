@@ -24,7 +24,7 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity {
     int totals;
     DBHelper databaseHelper;
-    Button take,pay;
+    Button take,pay,scan;
     TextView income, expense,total;
     PieChart pieChart;
 
@@ -36,6 +36,7 @@ public class Dashboard extends AppCompatActivity {
         income =  findViewById (R.id.income);
         expense = findViewById (R.id.expense);
         take = findViewById (R.id.takeButton);
+        scan = findViewById (R.id.scanButton);
         total = findViewById(R.id.total);
         pay = findViewById (R.id.payButton);
         pieChart =  findViewById (R.id.pieChart);
@@ -49,6 +50,15 @@ public class Dashboard extends AppCompatActivity {
         totals = Utils.income - Utils.expense;
 
         total.setText("₽ " + totals );
+
+        scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext (), Scan.class);
+                startActivity (intent);
+                finish ();
+            }
+        });
 
         take.setOnClickListener(new View.OnClickListener() {
             @Override

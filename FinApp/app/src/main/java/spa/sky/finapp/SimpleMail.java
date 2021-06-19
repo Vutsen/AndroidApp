@@ -50,14 +50,14 @@ public class SimpleMail extends Activity {
         String subject = "Отчет";
         String list = "Отчет из приложения FinApp";
         Intent emailIntent = new Intent("android.intent.action.SEND");
-        Utils.pdfNumber = Utils.pdfNumber - 1;
+        Utils.pdfNumber = Utils.pdfNumber;
         emailIntent.setType("plain/text");
         emailIntent.putExtra("android.intent.extra.EMAIL", new String[]{address});
         emailIntent.putExtra("android.intent.extra.SUBJECT", subject);
         emailIntent.putExtra("android.intent.extra.TEXT", list);
         emailIntent.putExtra("android.intent.extra.STREAM",
                 FileProvider.getUriForFile(this,BuildConfig.APPLICATION_ID +".provider",
-                        new File( Environment.getExternalStorageDirectory() + "/Documents/FinAppReport"+Utils.pdfNumber + ".pdf")));
+                        new File( Environment.getExternalStorageDirectory() + "/Documents/FinAppReport"+Utils.pdfNumber + ".xls")));
         emailIntent.setType("text/document");
         try {
             SimpleMail.this.startActivity(Intent.createChooser(emailIntent, "Отправка письма..."));

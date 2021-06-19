@@ -22,7 +22,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_SIGNUP = "contacts";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_MOBILE = "mobile";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";
 
@@ -35,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_DATETIME = "created_at";
 
     private SQLiteDatabase db;
-    private static final String CREATE_TABLE_SIGNUP = "CREATE TABLE " + TABLE_SIGNUP + "( " + COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL , " + COLUMN_NAME + " TEXT NOT NULL , " + COLUMN_EMAIL + " TEXT NOT NULL , " + COLUMN_MOBILE + " INTEGER NOT NULL, "  + COLUMN_PASSWORD + " TEXT NOT NULL );";
+    private static final String CREATE_TABLE_SIGNUP = "CREATE TABLE " + TABLE_SIGNUP + "( " + COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL , " + COLUMN_NAME + " TEXT NOT NULL , " + COLUMN_EMAIL + " TEXT NOT NULL , " + COLUMN_PASSWORD + " TEXT NOT NULL );";
 
     private static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE " + TABLE_TRANSACT + "( " + COL_TID + " INTEGER PRIMARY KEY NOT NULL , " + COL_U_ID + " INTEGER NOT NULL " + " , " + COL_TAG + " TEXT NOT NULL , " + COL_EXIN + " INTEGER NOT NULL, " + COL_DATETIME + " DATETIME  NOT NULL, " + COL_AMOUNT + " INTEGER NOT NULL );";
 
@@ -67,7 +66,6 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_EMAIL, c.getEmailId());
-        values.put(COLUMN_MOBILE, c.getMobile());
         values.put(COLUMN_PASSWORD, c.getPassword());
         db.insert(TABLE_SIGNUP, null, values);
     }

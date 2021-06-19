@@ -11,6 +11,7 @@ public class Utils {
     public static int dateexpense = 0;
     public static int dateincome= 0;
     public static int pdfNumber = 1;
+    public static int rowNumber = 0;
     public static String startDate = "";
     public static String endDate = "";
 

@@ -20,11 +20,10 @@ import java.util.regex.Pattern;
 
 public class SignUp_Fragment extends Fragment implements View.OnClickListener {
     private static View view;
-    private static EditText fullName, emailId, mobileNumber,
+    private static EditText fullName, emailId,
             password, confirmPassword;
     private static TextView login;
     private static Button signUpButton;
-    private static CheckBox terms_conditions;
     DBHelper databaseHelper;
 
 
@@ -46,12 +45,10 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
     private void initViews() {
         fullName = (EditText) view.findViewById(R.id.fullName);
         emailId = (EditText) view.findViewById(R.id.userEmailId);
-        mobileNumber = (EditText) view.findViewById(R.id.mobileNumber);
         password = (EditText) view.findViewById(R.id.password);
         confirmPassword = (EditText) view.findViewById(R.id.confirmPassword);
         signUpButton = (Button) view.findViewById(R.id.signUpBtn);
         login = (TextView) view.findViewById(R.id.already_user);
-        terms_conditions = (CheckBox) view.findViewById(R.id.terms_conditions);
 
         @SuppressLint("ResourceType") XmlResourceParser xrp = getResources().getXml(R.drawable.text_selector);
         try {
@@ -59,7 +56,6 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
                     xrp);
 
             login.setTextColor(csl);
-            terms_conditions.setTextColor(csl);
         } catch (Exception e) {
         }
     }
@@ -94,7 +90,6 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
 
         String getFullName = fullName.getText().toString();
         String getEmailId = emailId.getText().toString();
-        String getMobileNumber = mobileNumber.getText().toString();
         String getPassword = password.getText().toString();
         String getConfirmPassword = confirmPassword.getText().toString();
 
@@ -105,7 +100,6 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
 
         if (getFullName.equals("") || getFullName.length() == 0
                 || getEmailId.equals("") || getEmailId.length() == 0
-                || getMobileNumber.equals("") || getMobileNumber.length() == 0
                 || getPassword.equals("") || getPassword.length() == 0
                 || getConfirmPassword.equals("")
                 || getConfirmPassword.length() == 0)
@@ -124,21 +118,15 @@ public class SignUp_Fragment extends Fragment implements View.OnClickListener {
                     "Оба пароля не совпадают.");
 
 
-        else if (!terms_conditions.isChecked())
-            new CustomToast().Show_Toast(getActivity(), view,
-                    "Пожалуйста, примите условия использования приложения.");
-
         else {
 
             Contact c = new Contact ();
             c.setName (getFullName);
             c.setEmailId (getEmailId);
-            c.setMobile (Long.parseLong (getMobileNumber));
             c.setPassword (getPassword);
             databaseHelper.insertContact(c);
             Toast.makeText(getActivity(), "Войдите с помощью логина и почты.", Toast.LENGTH_SHORT).show();
             new MainActivity().replaceLoginFragment();
         }
-
     }
 }
