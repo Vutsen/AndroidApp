@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".DateCheck"/>
         <activity android:name=".Dashboard"/>
+        <activity android:name=".Scan"/>
+        <activity android:name=".CustomScanActivity"></activity>
         <activity android:name=".SimpleMail"/>
         <activity android:name=".ExpensesActivity" />
         <activity android:name=".IncomeActivity"/>

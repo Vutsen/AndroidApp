@@ -69,7 +69,7 @@ public class Pdf extends AppCompatActivity {
                 HSSFRow rowA = firstSheet.createRow(Utils.rowNumber);
 
                 cell = rowA.createCell(0);
-                cell.setCellValue("Транзакции");
+                cell.setCellValue("Тэг расхода");
 
                 cell = rowA.createCell(1);
                 cell.setCellValue("Сумма в рублях");
